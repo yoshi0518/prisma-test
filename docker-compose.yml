@@ -1,0 +1,88 @@
+version: "3.8"
+
+# Service definition
+services:
+  mysql:
+    # Dockerfile
+    build: ./docker/mysql
+    # Image Names
+    image: mysql:custom
+    # Container Name
+    container_name: mysql
+    # Environment
+    env_file:
+      - .env
+    # Mount host directory(host:container)
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+    # Command
+    # Port forwarding(host:container)
+    ports:
+      - 3306:3306
+    # Network
+    networks:
+      - prisma-test
+    # Continue container startup
+    stdin_open: true
+    tty: true
+    # Restart
+    restart: always
+
+  phpmyadmin:
+    # Image Name
+    image: phpmyadmin:5.2
+    # Container Name
+    container_name: phpmyadmin
+    # Container dependencies
+    depends_on:
+      - mysql
+    # Environment
+    env_file:
+      - .env
+    # Port forwarding(host:container)
+    ports:
+      - 8080:80
+    # Network
+    networks:
+      - prisma-test
+    # Continue container startup
+    stdin_open: true
+    tty: true
+    # Restart
+    restart: always
+
+  prisma:
+    # Dockerfile
+    build: ./docker/prisma
+    # Image Names
+    image: prisma:custom
+    # Container Name
+    container_name: prisma
+    # Environment
+    env_file:
+      - .env
+    # Mount host directory(host:container)
+    volumes:
+      - ./app:/work/app
+    # Current Directory
+    working_dir: /work
+    # Port forwarding(host:container)
+    ports:
+      - 8000:8000
+      - 5555:5555
+    # Network
+    networks:
+      - prisma-test
+    # Continue container startup
+    stdin_open: true
+    tty: true
+    # Container dependencies
+    depends_on:
+      - phpmyadmin
+    # Restart
+    restart: always
+
+# Network definition
+networks:
+  prisma-test:
+    external: true
