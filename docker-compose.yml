@@ -1,0 +1,84 @@
+version: "3.8"
+
+# Service definition
+services:
+  mysql:
+    # Dockerfile
+    build: ./docker/mysql
+    # Image Names
+    image: mysql:dev
+    # Container Name
+    container_name: mysql
+    # Environment
+    env_file:
+      - .env
+    # Mount host directory(host:container)
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+      - ./docker/mysql/logs:/var/log/mysql
+    # Port forwarding(host:container)
+    ports:
+      - 3306:3306
+    # Network
+    networks:
+      - test
+    # Continue container startup
+    stdin_open: true
+    tty: true
+    # Restart
+    restart: always
+
+  phpmyadmin:
+    # Image Names
+    image: phpmyadmin:5.2.1-fpm-alpine
+    # Container Name
+    container_name: phpmyadmin
+    # Environment
+    env_file:
+      - .env
+    # Port forwarding(host:container)
+    ports:
+      - 8080:80
+    # Network
+    networks:
+      - test
+    # Continue container startup
+    stdin_open: true
+    tty: true
+    # Container dependencies
+    depends_on:
+      - mysql
+    # Restart
+    restart: always
+
+  mssql:
+    # Image Names
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    # Container Name
+    container_name: mssql
+    # Environment
+    env_file:
+      - .env
+    volumes:
+      - "./docker/mssql/data:/var/opt/mssql/data"
+      - "./docker/mssql/log:/var/opt/mssql/log"
+      - "./docker/mssql/secrets:/var/opt/mssql/secrets"
+    # Port forwarding(host:container)
+    ports:
+      - 1433:1433
+    # Network
+    networks:
+      - test
+    # Continue container startup
+    stdin_open: true
+    tty: true
+    # Container dependencies
+    depends_on:
+      - phpmyadmin
+    # Restart
+    restart: always
+
+# Network definition
+networks:
+  test:
+    external: true
