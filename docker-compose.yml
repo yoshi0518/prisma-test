@@ -30,7 +30,7 @@ services:
 
   phpmyadmin:
     # Image Names
-    image: phpmyadmin:5.2.1-fpm-alpine
+    image: phpmyadmin:5.2.1
     # Container Name
     container_name: phpmyadmin
     # Environment

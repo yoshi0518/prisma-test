@@ -5,3 +5,4 @@ dist
 .eslintignore
 .prettierignore
 .DS_Store
+prisma
