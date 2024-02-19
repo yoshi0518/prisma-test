@@ -34,6 +34,44 @@ $ docker-compose ps
 $ docker-compose down
 ```
 
+### Prisma
+
+```bash
+# Prisma初期化
+$ pnpm dlx prisma init
+
+# `prisma/models/base.prisma` のDB接続情報を修正
+
+# `prisma/models/xxx.prisma` を追加
+
+# マイグレーション生成
+$ pnpm prisma:migrate --name="xxx"
+
+# マイグレーションファイルの内容を確認
+
+# マイグレーション適用
+$ pnpm prisma:deploy
+
+# Prismaクライアント更新
+$ pnpm prisma:generate
+
+# TypeScriptコンパイル
+$ pnpm build
+
+# Node処理実行
+$ node dist/xxx.js
+```
+
+### Lint、Format
+
+```bash
+# Lint
+$ pnpm lint
+
+# Format
+$ pnpm fmt
+```
+
 ### MySQL Container
 
 ```bash

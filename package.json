@@ -1,0 +1,15 @@
+{
+  "name": "prisma-test",
+  "description": "Prisma Test",
+  "version": "1.0.0",
+  "private": true,
+  "author": "yoshi0518",
+  "scripts": {
+    "project": "pnpm -F \"@project/*\"",
+    "mysql": "pnpm -F \"@project/mysql\"",
+    "mssql": "pnpm -F \"@project/mssql\""
+  },
+  "devDependencies": {
+    "turbo": "latest"
+  }
+}
