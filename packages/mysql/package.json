@@ -1,0 +1,23 @@
+{
+  "name": "@project/mysql",
+  "description": "Prisma MySQL Test",
+  "version": "1.0.0",
+  "private": true,
+  "author": "yoshi0518",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint --ext \".js,.ts\" --fix .",
+    "fmt": "prettier --write ."
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "@typescript-eslint/eslint-plugin": "^7.0.1",
+    "@typescript-eslint/parser": "^7.0.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.5",
+    "prisma": "^5.9.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
