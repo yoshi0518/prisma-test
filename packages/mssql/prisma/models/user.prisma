@@ -1,0 +1,13 @@
+import { Post } from "./post"
+
+model User {
+  id String @id @db.VarChar(50) @default(uuid())
+  createdAt DateTime @default(dbgenerated("getdate()")) @map("created_at")
+  updatedAt DateTime @default(dbgenerated("getdate()")) @map("updated_at")
+  userId String @unique @db.VarChar(100) @map("user_id")
+  userName String @db.VarChar(200) @map("user_name")
+  email String? @unique @db.VarChar(200)
+  posts Post[]
+
+  @@map("t_users")
+}

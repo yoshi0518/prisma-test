@@ -1,0 +1,14 @@
+import { User } from "./user"
+
+model Post {
+  id String @id @db.VarChar(50) @default(uuid())
+  createdAt DateTime @default(dbgenerated("getdate()")) @map("created_at")
+  updatedAt DateTime @default(dbgenerated("getdate()")) @map("updated_at")
+  title String @db.VarChar(200)
+  content String? @db.Text
+  published Int @db.SmallInt @default(0)
+  userId String @db.VarChar(100) @map("user_id")
+  user User @relation(fields: [userId], references: [userId])
+
+  @@map("t_posts")
+}

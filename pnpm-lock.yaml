@@ -12,6 +12,42 @@ importers:
         specifier: latest
         version: 1.12.4
 
+  packages/mssql:
+    devDependencies:
+      '@prisma/client':
+        specifier: ^5.9.1
+        version: 5.9.1(prisma@5.9.1)
+      '@types/node':
+        specifier: ^20.11.19
+        version: 20.11.19
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^7.0.1
+        version: 7.0.1(@typescript-eslint/parser@7.0.1)(eslint@8.56.0)(typescript@5.3.3)
+      '@typescript-eslint/parser':
+        specifier: ^7.0.1
+        version: 7.0.1(eslint@8.56.0)(typescript@5.3.3)
+      eslint:
+        specifier: ^8.56.0
+        version: 8.56.0
+      eslint-config-prettier:
+        specifier: ^9.1.0
+        version: 9.1.0(eslint@8.56.0)
+      prettier:
+        specifier: ^3.2.5
+        version: 3.2.5
+      prisma:
+        specifier: ^5.9.1
+        version: 5.9.1
+      prisma-import:
+        specifier: ^1.0.5
+        version: 1.0.5
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.11.19)(typescript@5.3.3)
+      typescript:
+        specifier: ^5.3.3
+        version: 5.3.3
+
   packages/mysql:
     devDependencies:
       '@prisma/client':

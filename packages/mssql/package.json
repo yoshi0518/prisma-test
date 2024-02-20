@@ -1,6 +1,6 @@
 {
-  "name": "@project/mysql",
-  "description": "Prisma MySQL Test",
+  "name": "@project/mssql",
+  "description": "Prisma SQLServer Test",
   "version": "1.0.0",
   "private": true,
   "author": "yoshi0518",

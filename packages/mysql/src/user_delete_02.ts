@@ -1,15 +1,10 @@
 import { prisma } from './libs/prisma';
 
 const main = async () => {
-  const newUser = await prisma.user.create({
-    data: {
-      userId: 'user1',
-      userName: 'user1',
-      email: 'user1@example.com',
-    },
-  });
+  const deletePost = await prisma.post.deleteMany();
+  const deleteUser = await prisma.user.deleteMany();
 
-  console.log({ newUser });
+  console.log({ deletePost, deleteUser });
 };
 
 main()
