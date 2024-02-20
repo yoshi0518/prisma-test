@@ -1,15 +1,18 @@
 import { prisma } from './libs/prisma';
 
 const main = async () => {
-  const newUser = await prisma.user.create({
-    data: {
+  const selectUser = await prisma.user.findUnique({
+    select: {
+      id: true,
+      userId: true,
+      updatedAt: true,
+    },
+    where: {
       userId: 'user1',
-      userName: 'user1',
-      email: 'user1@example.com',
     },
   });
 
-  console.log({ newUser });
+  console.log({ selectUser });
 };
 
 main()

@@ -1,15 +1,15 @@
 import { prisma } from './libs/prisma';
 
 const main = async () => {
-  const newUser = await prisma.user.create({
-    data: {
-      userId: 'user1',
-      userName: 'user1',
-      email: 'user1@example.com',
-    },
-  });
+  const updateUsers = await prisma.$executeRaw`
+  update
+    t_users
+  set
+    t_users.user_name = concat(t_users.user_name, 'Update')
+  ;
+  `;
 
-  console.log({ newUser });
+  console.log({ updateUsers });
 };
 
 main()

@@ -1,15 +1,16 @@
 import { prisma } from './libs/prisma';
 
 const main = async () => {
-  const newUser = await prisma.user.create({
-    data: {
+  const updateUser = await prisma.user.update({
+    where: {
       userId: 'user1',
-      userName: 'user1',
-      email: 'user1@example.com',
+    },
+    data: {
+      userName: 'user1Update',
     },
   });
 
-  console.log({ newUser });
+  console.log({ updateUser });
 };
 
 main()
